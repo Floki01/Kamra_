@@ -1,0 +1,80 @@
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:300,400,700);
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: #445566;
+}
+
+#calendar {
+  width: 450px;
+  margin: 0 auto;
+  margin-top: 2%;
+  margin-bottom: 2%;
+  border-radius: 5px;
+  font-family: "Open Sans", sans-serif;
+  text-align: center;
+  color: black;
+  box-shadow: 0 0 50px -14px rgba(0, 0, 0, 0.8);
+}
+
+#calendar h1 {
+  background: #D7C9FF;
+  border-radius: 5px 5px 0 0;
+  padding: 20px;
+  font-size: 140%;
+  font-weight: 300;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: black;
+  cursor: default;
+}
+
+#calendar table {
+  border-top: 1px solid #ddd;
+  border-left: 1px solid #ddd;
+  border-spacing: 0;
+  border-radius: 0 0 5px 5px;
+}
+
+#calendar td {
+  width: 90px;
+  height: 90px;
+  background: #eee;
+  border-right: 1px solid #ddd;
+  border-bottom: 1px solid #ddd;
+  padding: 6px;
+  cursor: pointer;
+}
+
+#calendar td:hover:not(.current) {
+  background: #ddd;
+}
+
+#calendar .lastmonth,
+#calendar .nextmonth,
+#calendar .nextmonth ~ * {
+  background: #fff;
+  color: #999;
+}
+
+#calendar .current {
+  background: #D7C9FF;
+  font-weight: 700;
+  color: #fff;
+
+}
+
+#calendar .hastask {
+  font-weight: 700;
+}
+
+#calendar tr:last-of-type td:first-of-type {
+  border-radius: 0 0 0 5px;
+}
+#calendar tr:last-of-type td:last-of-type {
+  border-radius: 0 0 5px 0;
+}

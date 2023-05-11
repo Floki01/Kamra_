@@ -1,0 +1,164 @@
+#navbar{
+    padding: 0px;
+}
+#navbar-container{
+    background-color: #D7C9FF;
+}
+#navbar-margin{
+    margin-right: 3%;
+    width: 30%;
+    padding: 20px;
+}
+
+#icon-navbar{
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+}
+#navbarTogglerDemo02{
+    width: 70%;
+    justify-content: center;
+}
+
+#buttons-navbar{
+    justify-content: end;
+    width: 80%;
+}
+
+#ul-navbar{
+    width: 100%;
+    justify-content: center;
+}
+
+#botones{
+    background-color: #E8E7FD;
+    color: #33196B;
+    border-color: #33196B;
+    font-size: 16px;
+}
+
+
+#service-title{
+    height: 50px;
+    background-image: linear-gradient(to bottom, #D7C9FF, #E6E6E6);
+}
+
+#service-active{
+    background-color: #56196B;    
+    border-radius: 0px 200px 200px 10px;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+#service-inactive{   
+    border-radius: 0px 200px 200px 10px;
+    color: black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#frame-progress{
+    height: 100px;
+}
+
+#frame-bar{
+    background-color: #E6E6E6;
+    height: 50%;
+}
+
+#myBar{
+    background-color: #56196B;
+    height: 100%;
+}
+
+#service{
+    color: white;
+    height: 100%;
+    
+}
+#icon-service{
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.imgServ{
+    height: 500px;
+}
+
+.btn-servicio{
+    background-color: #33196B !important;
+    color: white !important;
+}
+
+.card-servicio{
+    width: 490px !important;
+    height: 390px !important;
+}
+
+
+
+/* confirma.html */
+
+
+.cont-confirmacion{
+    height: 600px!important;
+    width: 70% !important;
+    
+}
+
+.card-confirmacion{
+    height: 270px !important;
+    width: 30px !important;
+}
+
+.btn-confirm{
+    background-color: #7CB97A !important;
+    padding-left: 50px !important;
+    padding-right: 50px !important;
+    font-size: 20px !important;
+    color: black !important;
+}
+
+#datos{
+    padding: 5%;
+    margin: 4%;
+}
+
+#datos span{
+    font-style: italic;
+    font-weight: bold;
+}
+
+#imgConfirm{
+    height: 200px;
+}
+
+
+
+
+
+
+/* fecha.htm */
+
+.col-calendario{
+    width: 624px !important;
+    height: 556px !important;
+}
+
+.col-h-disp{
+    width: 800px !important;
+    height: 556px !important;
+    background-color: #EDEDED;
+}
+
+.btn-fechas{
+    margin: 4%;
+    padding: 15px 30px 15px 30px !important;
+    font-size: 20px !important;
+    background-color: #353138 !important;
+    color: white !important;
+}
