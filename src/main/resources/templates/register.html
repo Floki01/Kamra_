@@ -68,9 +68,12 @@
 
           <!-- FORMULARIO -->
           <form th:action="@{/register}" method="post" th:object="${user}" class="formulario">
+            <div th:if="${param.success}">
+              <div class="alert alert-info">
+                  Registro exitoso !!!
+              </div>
+          </div>
             <h4 class="text-center pt-4 mb-3">Registro de usuario</h4>
-
-
             <div class="mb-1">
               <label for="exampleInputEmail1" class="form-label">Nombre completo</label>
               <div class="input-group mb-1">

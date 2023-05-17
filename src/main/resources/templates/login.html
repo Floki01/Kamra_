@@ -71,6 +71,11 @@
 
 
           <form class="formulario" th:action="@{/login}" method="post" role="form">
+
+            <div th:if="${param.error}">
+              <div class="alert alert-danger">Email o contraseña invalida</div>
+            </div>
+
             <h4 class="text-center mb-5" style="margin: 0px;">Inicio de sesión</h4>
 
             <div class="mb-1">
@@ -107,7 +112,7 @@
                 <input type="password" name="password" class="form-control" id="input-form">
               </div>
             </div>
-            <div class="mb-3 mt-2">
+            <div class="mb-3 mt-2 text-center">
               <button type="submit" class="btn btn-success">Iniciar sesión</button>
             </div>
           </form>
@@ -118,7 +123,7 @@
           <div class="botones-login">
 
             <div class="mb-3 mt-2">
-              <button type="submit" class="btn btn-light">
+              <button type="submit" class="btn btn-light m-1">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-google"
                   viewBox="0 0 16 16">
                   <path

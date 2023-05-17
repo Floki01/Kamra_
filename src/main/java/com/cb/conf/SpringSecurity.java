@@ -38,11 +38,6 @@ public class SpringSecurity {
                 .logout((logout) -> logout.permitAll())
                 .exceptionHandling().accessDeniedPage("/access-denied");
 
-        // http.authorizeHttpRequests((requests) -> requests
-        //                 .requestMatchers("/ankh", "/inicio", "/tarot", "/styles/**", "/resources/**")
-        //                 .permitAll()
-        //                 .anyRequest().authenticated());
-
         http.headers().frameOptions().disable();
         return http.build();
     }
