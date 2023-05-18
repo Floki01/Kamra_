@@ -10,7 +10,12 @@ public class UserController {
 
     @GetMapping("/")
     public String registrationForm() {
-        return "inicio";
+        return "inicioPrueba";
+    }
+
+    @GetMapping("/agenda")
+    public String agenda(){
+        return "agenda";
     }
 
 }
