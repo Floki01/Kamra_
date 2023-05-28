@@ -30,7 +30,7 @@ public class Sesion {
     @Column
     public String hora;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "dia_id")
     private Dia dia;
 

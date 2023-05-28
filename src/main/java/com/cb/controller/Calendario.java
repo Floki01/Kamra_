@@ -8,6 +8,6 @@ public class Calendario {
     
     @GetMapping("/calendar")
     public String showCalendar(){
-        return "calendar";
+        return "fecha";
     }
 }

@@ -2,6 +2,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.2/fullcalendar.min.css" />
     <link rel="stylesheet" href="/styles/agenda.css">
     <link rel="stylesheet" href="/styles/calendario.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -50,6 +51,15 @@
           </div>
         </div>
     </nav>
+    
+
+
+ 
+
+
+
+
+
 
     <div class="container-fluid p-0 text-center w-100 h-100">
       <div class="container-fluid p-0" id="service-title">
@@ -112,16 +122,17 @@
 
     <div class="d-flex row-flex px-5">
       <div class="col-calendario  rounded-5 m-5">
-          <div id="calendar">
-              <h1>Octubre</h1>
-              <table>
-                <tr><td class="lastmonth">30</td><td>1</td><td>2</td><td>3</td><td class="hastask">4</td><td>5</td><td>6</td></tr>
-                <tr><td>7</td><td class="current">8</td><td class="hastask">9</td><td>10</td><td>11</td><td class="hastask">12</td><td>13</td></tr>
-                <tr><td>14</td><td class="hastask">15</td><td>16</td><td>17</td><td>18</td><td>19</td><td>20</td></tr>
-                <tr><td class="hastask">21</td><td>22</td><td>23</td><td>24</td><td>25</td><td class="hastask">26</td><td>27</td></tr>
-                <tr><td>28</td><td>29</td><td class="hastask">30</td><td>31</td><td class="nextmonth">1</td><td>2</td><td>3</td></tr>
-              </table>
-            </div>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.2/fullcalendar.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.2/locale-all.js"></script>
+        <div id="calendarContainer">
+          <div id="calendar"></div>
+      </div>
+          <form id="dateForm" action="/agendar" method="POST">
+            <input type="hidden" id="selectedDate" name="selectedDate">
+            <button type="submit">Agendar</button>
+        </form>
       </div>
       <div class="col-h-disp border border-dark rounded-5 m-5 px-5">
           <div class="vstack gap-1">
@@ -149,5 +160,48 @@
           </div>
       </div>
   </div>
+
+
+  <script>
+    $(document).ready(function () {
+        $('#calendar').fullCalendar({
+            // Resto de opciones del calendario...
+
+            selectable: true,
+            defaultView: "month",
+            viewRender: function (view, element) {
+                $('.fc-prev-button, .fc-next-button').hide();
+            },
+            select: function (start) {
+                var selectedDate = start.format();
+
+                // Realiza una llamada AJAX para obtener las horas disponibles
+                $.ajax({
+                    url: "/test/disp",
+                    data: { fecha: selectedDate },
+                    success: function (data) {
+                        // data contendrá la respuesta del servidor con las horas disponibles
+                        // Aquí puedes mostrar las horas disponibles al usuario o realizar otras acciones
+
+                        var fechasContainer = $('#fechasDisponibles');
+                        fechasContainer.empty();
+
+                        data.forEach(function (fecha) {
+                            var fechaElement = $('<p>').text(fecha);
+                            fechasContainer.append(fechaElement);
+                        });
+
+                        window.alert(data);
+                    },
+                    error: function () {
+                        // Maneja cualquier error de la llamada AJAX
+                    }
+                });
+            }
+        });
+    });
+</script>
+
+
   </body>
 </html>
