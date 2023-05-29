@@ -43,6 +43,14 @@ public class Prueba {
     List<String> horasDisponibles = new ArrayList<>();// Obtén las horas disponibles de la terapeuta para la fecha especificada
     horasDisponibles.addAll(sesionService.disponibles(fecha));
     return ResponseEntity.ok(horasDisponibles);
+
+
+    // @GetMapping("/disp")
+    // public ResponseEntity<List<String>> getHorasDisponibles(@RequestParam("fecha") String fecha) {
+    // // Aquí deberías implementar la lógica para obtener las horas disponibles para la terapeuta en la fecha proporcionada
+    // List<String> horasDisponibles = new ArrayList<>();// Obtén las horas disponibles de la terapeuta para la fecha especificada
+    // horasDisponibles.addAll(sesionService.disponibles(fecha));
+    // return ResponseEntity.ok(horasDisponibles);
 }
 
 }

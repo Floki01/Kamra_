@@ -43,7 +43,7 @@ public class SpringSecurity {
         //         .exceptionHandling().accessDeniedPage("/access-denied");
 
         http.authorizeHttpRequests().
-        requestMatchers("/register/**","/pepe/**","/calendar","/test/**","/ankh", "/inicio", "/tarot", "/styles/**", "/resources/**","/login/**").permitAll()
+        requestMatchers("/register/**","/calendar","/test/**","/ankh", "/inicio", "/tarot","/agenda/**", "/styles/**", "/resources/**","/login/**").permitAll()
         .requestMatchers("/user/**").hasAnyRole("USER", "ADMIN")
         .and()
         .formLogin().loginPage("/login")

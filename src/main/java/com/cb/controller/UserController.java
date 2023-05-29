@@ -13,9 +13,9 @@ public class UserController {
         return "inicioPrueba";
     }
 
-    @GetMapping("/agenda")
-    public String agenda(){
-        return "agenda";
-    }
+    // @GetMapping("/agenda")
+    // public String agenda(){
+    //     return "serivicios";
+    // }
 
 }

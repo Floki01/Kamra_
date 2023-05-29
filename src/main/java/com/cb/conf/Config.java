@@ -3,8 +3,10 @@ package com.cb.conf;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.stereotype.Component;
 
+import com.cb.dto.UserDto;
 import com.cb.model.Servicio;
 import com.cb.repository.ServicioRepository;
+import com.cb.service.UserService;
 
 import jakarta.annotation.PostConstruct;
 
@@ -26,7 +28,7 @@ public class Config implements CommandLineRunner {
     public void run(String... args) throws Exception {
 
         servicioRepository.saveAll(Arrays.asList(new Servicio("Tarort", 10000), new Servicio("Ankhn", 10000)));
-     
+        
     }
 
    
