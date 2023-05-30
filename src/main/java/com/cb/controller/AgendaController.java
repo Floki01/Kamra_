@@ -21,17 +21,17 @@ public class AgendaController {
         return modelAndView;
     }
 
-    @GetMapping("/servicios/{id}")
-    public ModelAndView fechas(@PathVariable("id") Long id){
+    @GetMapping("/calendario")
+    public ModelAndView fechas(@RequestParam("id") String id){
         ModelAndView modelAndView = new ModelAndView("fechas");
         modelAndView.addObject("id",id);
         return modelAndView;
     }
 
     @PostMapping("/enviar-consulta")
-    public ModelAndView confirmar(@RequestParam("hora") String fecha){
+    public ModelAndView confirmar(@RequestParam("hora") String fecha, @RequestParam("id") String id){
         ModelAndView modelAndView = new ModelAndView("redirect:/tarot");
-        
+        System.out.println(id);
         System.out.println(fecha);
         return modelAndView;
     }
