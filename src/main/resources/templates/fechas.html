@@ -179,6 +179,7 @@
               <div id="fechasDisponibles"></div>
               <select id="miSelect" name="hora"></select>
               <input type="text" name="id" id="idServicio">
+              <input type="text" name="fecha" id="fecha">
               <input type="submit" value="Enviar fechas">
             </form>
           </div>
@@ -194,8 +195,6 @@
     //Capturando dato id.
     var urlParams = new URLSearchParams(window.location.search);
     var id = urlParams.get('id');
-    window.alert(id);
-
 
     $(document).ready(function () {
 
@@ -217,6 +216,11 @@
         select: function (start) { //Al seleccionar un elemento
           var selectedDate = start.format();
           var tituloFechaContainer = $('#tituloFecha');
+          var fechaContainer = $("#fecha");
+          
+          fechaContainer.val(selectedDate);
+          fechaContainer.hide();
+          
           tituloFechaContainer.text(selectedDate);
 
           // Realiza una llamada AJAX para obtener las horas disponibles
@@ -227,9 +231,8 @@
               // data contendrá la respuesta del servidor con las horas disponibles
               // Aquí puedes mostrar las horas disponibles al usuario o realizar otras acciones
 
-
               var select = $('#miSelect');
-              // Se vacia el contenedor
+              select.empty(); // Se vacia el contenedor
 
               data.forEach(function (fecha) {
                 var fechaElement = $('<select>').val(fecha);

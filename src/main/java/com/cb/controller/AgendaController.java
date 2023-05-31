@@ -29,9 +29,10 @@ public class AgendaController {
     }
 
     @PostMapping("/enviar-consulta")
-    public ModelAndView confirmar(@RequestParam("hora") String fecha, @RequestParam("id") String id){
+    public ModelAndView confirmar(@RequestParam("hora") String hora,@RequestParam("fecha") String fecha, @RequestParam("id") String id){
         ModelAndView modelAndView = new ModelAndView("redirect:/tarot");
         System.out.println(id);
+        System.out.println(hora);
         System.out.println(fecha);
         return modelAndView;
     }
