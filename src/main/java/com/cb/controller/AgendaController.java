@@ -15,27 +15,27 @@ import org.springframework.web.bind.annotation.RequestBody;
 @RequestMapping("/agenda")
 public class AgendaController {
     
-    @GetMapping("/servicios")
-    public ModelAndView servicios(){
-        ModelAndView modelAndView = new ModelAndView("servicios");
-        return modelAndView;
-    }
+    // @GetMapping("/servicios")
+    // public ModelAndView servicios(){
+    //     ModelAndView modelAndView = new ModelAndView("servicios");
+    //     return modelAndView;
+    // }
 
-    @GetMapping("/calendario")
-    public ModelAndView fechas(@RequestParam("id") String id){
-        ModelAndView modelAndView = new ModelAndView("fechas");
-        modelAndView.addObject("id",id);
-        return modelAndView;
-    }
+    // @GetMapping("/calendario")
+    // public ModelAndView fechas(@RequestParam("id") String id){
+    //     ModelAndView modelAndView = new ModelAndView("fechas");
+    //     modelAndView.addObject("id",id);
+    //     return modelAndView;
+    // }
 
-    @PostMapping("/enviar-consulta")
-    public ModelAndView confirmar(@RequestParam("hora") String hora,@RequestParam("fecha") String fecha, @RequestParam("id") String id){
-        ModelAndView modelAndView = new ModelAndView("redirect:/tarot");
-        System.out.println(id);
-        System.out.println(hora);
-        System.out.println(fecha);
-        return modelAndView;
-    }
+    // @PostMapping("/enviar-consulta")
+    // public ModelAndView confirmar(@RequestParam("hora") String hora,@RequestParam("fecha") String fecha, @RequestParam("id") String id){
+    //     ModelAndView modelAndView = new ModelAndView("redirect:/tarot");
+    //     System.out.println(id);
+    //     System.out.println(hora);
+    //     System.out.println(fecha);
+    //     return modelAndView;
+    // }
     
 
 }

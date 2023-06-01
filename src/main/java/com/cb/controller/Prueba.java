@@ -12,11 +12,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.cb.dto.UserDto;
 import com.cb.model.Dia;
 import com.cb.model.Sesion;
 import com.cb.repository.DiaRepository;
 import com.cb.service.DiaService;
 import com.cb.service.SesionService;
+import com.cb.service.UserService;
 
 
 
@@ -31,10 +33,19 @@ public class Prueba {
     @Autowired
     private SesionService sesionService;
 
+    @Autowired
+    private UserService userService;
+
     @GetMapping("/add")
     public ResponseEntity<String> agregarDiasDelMes() {
         diaService.agregarDiasDelMes();
         return ResponseEntity.ok("Días agregados correctamente");
+    }
+
+    @GetMapping("/user")
+    public ResponseEntity<String> agregarUser() {
+        userService.saveUser(new UserDto("p", "m.arias@gmail.com", "12345", "111", "111"));
+        return ResponseEntity.ok("USUARIO CREADO");
     }
 
     @GetMapping("/disp")
@@ -43,6 +54,8 @@ public class Prueba {
     List<String> horasDisponibles = new ArrayList<>();// Obtén las horas disponibles de la terapeuta para la fecha especificada
     horasDisponibles.addAll(sesionService.disponibles(fecha));
     return ResponseEntity.ok(horasDisponibles);
+
+
 
 
     // @GetMapping("/disp")

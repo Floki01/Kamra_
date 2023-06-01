@@ -1,4 +1,5 @@
 <!doctype html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security"></html>
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -138,16 +139,19 @@
               <div class="col p-4 border shadow rounded-5 border-dark">
                   <div class="vstack px-5 gap-3">
                       <span class="text-center fw-bolder">Datos personales</span>
+                      
                       <div class="p-1">
                           <span>Nombre completo</span>
                           <div class="border border-dark rounded-3">
                               <i class="fa fa-address-card-o px-3"></i>
+                              
                           </div>
                       </div>
                       <div class="p-1">
                           <span>Correo electronico</span>
                           <div class="border border-dark rounded-3">
                               <i class="fa fa-envelope-o px-3"></i>
+                              <span sec:authentication="principal.username"/>
                           </div>
                       </div>
                       <div class="p-1">
