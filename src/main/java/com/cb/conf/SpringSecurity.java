@@ -47,9 +47,7 @@ public class SpringSecurity {
         .requestMatchers("/user/**").hasAnyRole("USER", "ADMIN")
         .and()
         .formLogin().loginPage("/login")
-        .loginProcessingUrl("/login").defaultSuccessUrl("/user/").
-        and()
-        .oauth2Login().loginPage("/login");
+        .loginProcessingUrl("/login").defaultSuccessUrl("/user/");
 
     
 

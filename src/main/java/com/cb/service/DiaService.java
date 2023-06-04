@@ -1,19 +1,10 @@
 package com.cb.service;
 
-import java.sql.Date;
-import java.util.List;
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Calendar;
-import java.util.ListIterator;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.cb.model.Dia;
-import com.cb.model.Sesion;
 import com.cb.repository.DiaRepository;
-import com.cb.repository.SesionRepository;
-
 
 @Service
 public class DiaService {

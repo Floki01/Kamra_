@@ -7,9 +7,15 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 
 @Entity
+@Getter
+@NoArgsConstructor
+@AllArgsConstructor
 public class Servicio {
     
     @Id
@@ -17,13 +23,13 @@ public class Servicio {
     private Long id;
 
     @Column
-    private String nonbre;
+    private String nombre;
 
     @Column
     private int precio;
 
     public Servicio(String nonbre, int precio) {
-        this.nonbre = nonbre;
+        this.nombre = nonbre;
         this.precio = precio;
     }
 
