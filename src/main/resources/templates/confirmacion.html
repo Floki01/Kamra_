@@ -144,7 +144,7 @@
                           <span>Nombre completo</span>
                           <div class="border border-dark rounded-3">
                               <i class="fa fa-address-card-o px-3"></i>
-                              
+                              <span th:text="${user.name}"></span>
                           </div>
                       </div>
                       <div class="p-1">
@@ -158,6 +158,7 @@
                           <span>Numero telefonico</span>
                           <div class="border border-dark rounded-3">
                               <i class="fa fa-phone px-3"></i>
+                              <span th:text="${user.telefono}"></span>
                           </div>
                       </div>
                       <br>

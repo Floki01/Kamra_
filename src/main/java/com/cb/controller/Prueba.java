@@ -44,7 +44,7 @@ public class Prueba {
 
     @GetMapping("/user")
     public ResponseEntity<String> agregarUser() {
-        userService.saveUser(new UserDto("p", "m.arias@gmail.com", "12345", "111", "111"));
+        userService.saveUser(new UserDto("Matias Arias", "m.arias@gmail.com", "12345", "111", "123456789"));
         return ResponseEntity.ok("USUARIO CREADO");
     }
 
