@@ -3,10 +3,10 @@ package com.cb.model;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.OneToOne;
+import jakarta.persistence.Table;
 
 @Entity
+@Table(name = "Consultas")
 public class Consulta {
     
 
@@ -14,11 +14,12 @@ public class Consulta {
     private Long id;
 
     @ManyToOne
-    private Servicio servicio;
-
-    @ManyToOne
     private User user;
 
-    @OneToOne
+    @ManyToOne
     private Sesion sesion;
+
+    @ManyToOne
+    Servicio servicio;
+
 }

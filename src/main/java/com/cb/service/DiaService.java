@@ -15,8 +15,6 @@ public class DiaService {
     @Autowired
     private SesionService sesionService;
 
-
-
     public void agregarDiasDelMes() {
         Calendar calendar = Calendar.getInstance();
         calendar.set(Calendar.DAY_OF_MONTH, 1);

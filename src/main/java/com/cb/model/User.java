@@ -36,9 +36,6 @@ public class User {
     @Column
     private String telefono;
 
-    @OneToMany(fetch = FetchType.EAGER)
-    private List<Servicio> servicios = new ArrayList<>();
-
     @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinTable(
             name = "users_roles",

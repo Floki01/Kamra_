@@ -24,8 +24,10 @@ public class UserController {
     UserServiceImpl userServiceImpl;
 
     @GetMapping("/")
-    public String registrationForm() {
-        return "inicioPrueba";
+    public ModelAndView registrationForm(@RequestParam(value = "gmail", required = false) String gmail, @RequestParam(value ="fecha", required=false) String fecha) {
+        ModelAndView modelAndView = new ModelAndView("inicioPrueba");
+        modelAndView.addObject("fecha",fecha);
+        return modelAndView;
     }
 
     @GetMapping("/servicios")
@@ -63,5 +65,12 @@ public class UserController {
         modelAndView.addObject("user", userServiceImpl.findUserByEmail(authentication.getName()));
         return modelAndView;
     }
+
+    @GetMapping("/rediretHome")
+    public String rediretHome(@RequestParam("fecha") String fecha){
+        return "redirect:/user/?fecha="+fecha;
+    }
+
+
 
 }

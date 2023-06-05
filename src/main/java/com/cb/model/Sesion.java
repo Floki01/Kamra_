@@ -12,6 +12,7 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
+import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -22,6 +23,7 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
+@Table(name = "sesiones")
 public class Sesion {
     
     @Id
@@ -31,12 +33,11 @@ public class Sesion {
     @Column
     public String hora;
 
+    
+
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "dia_id")
     private Dia dia;
-
-    @OneToOne
-    private Consulta consulta;
 
     public Sesion(String hora, Dia dia) {
         this.hora = hora;
