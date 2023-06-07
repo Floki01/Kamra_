@@ -29,4 +29,17 @@ public class UserDto {
 
     @NotEmpty
     private String telefono;
+
+    public UserDto( String name,
+            String email,
+           String password,String fNacimiento,
+            String telefono) {
+        this.name = name;
+        this.email = email;
+        this.password = password;
+        this.fNacimiento = fNacimiento;
+        this.telefono = telefono;
+    }
+
+    
 }

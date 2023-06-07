@@ -1,4 +1,5 @@
 <!doctype html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security"></html>
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -120,8 +121,8 @@
               <div class="col">
                   <div class="vstack gap-3">
                       <div class="p-1">
-                          <span class="fw-bold h5">Fecha: 09-10-2023</span><br>
-                          <span class="fw-bold h5">Hora: 10:00</span>
+                          <span class="fw-bold h5">Fecha: [[${fecha}]]</span><br>
+                          <span class="fw-bold h5">Hora: [[${hora}]]</span>
                       </div>
                       <div class="p-2">
                           <div class="card shadow rounded-5" style="width: 22rem">
@@ -129,7 +130,7 @@
                               <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSdNsbPfOSEBBkcbnxKya1LkHk7O1jD3p3w9Q&usqp=CAU"
                                   class="card-img-top img-fluid" alt="...">
                               <div class="card-body">
-                                  <h5 class="card-title text-center">Cruz de ankh</h5>
+                                  <h5 class="card-title text-center"><span th:text="${servicio.nombre}"></span></h5>
                               </div>
                           </div>
                       </div>
@@ -138,27 +139,31 @@
               <div class="col p-4 border shadow rounded-5 border-dark">
                   <div class="vstack px-5 gap-3">
                       <span class="text-center fw-bolder">Datos personales</span>
+                      
                       <div class="p-1">
                           <span>Nombre completo</span>
                           <div class="border border-dark rounded-3">
                               <i class="fa fa-address-card-o px-3"></i>
+                              <span th:text="${user.name}"></span>
                           </div>
                       </div>
                       <div class="p-1">
                           <span>Correo electronico</span>
                           <div class="border border-dark rounded-3">
                               <i class="fa fa-envelope-o px-3"></i>
+                              <span sec:authentication="principal.username"/>
                           </div>
                       </div>
                       <div class="p-1">
                           <span>Numero telefonico</span>
                           <div class="border border-dark rounded-3">
                               <i class="fa fa-phone px-3"></i>
+                              <span th:text="${user.telefono}"></span>
                           </div>
                       </div>
                       <br>
-                      <div class="m-1 text-center">
-                          <span class="fw-bolder h5">Valor: $35.000</span>
+                      <div class="m-1 text-center h5">$
+                          <span class="fw-bolder h5" th:text="${servicio.precio}"></span>
                       </div>
                   </div>
               </div>
@@ -166,7 +171,7 @@
           </div>
           <div class="row p-4 m-3 text-center">
               <div class="col">
-                  <a href="#" class="btn btn-confirm">Confirmar ahora</a>
+                  <a th:href="@{/user/rediretHome(fecha=${fecha})}" class="btn btn-confirm">Confirmar ahora</a>
               </div>
           </div>
       </div>
