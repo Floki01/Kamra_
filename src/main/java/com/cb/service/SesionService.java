@@ -31,7 +31,7 @@ public class SesionService {
         return disponibles;
     }
 
-    public void defaulSessions(Dia dia){
+    public void defaulSessions(Dia dia){ //Por cada dia creado se agregan estas horas por defecto.
         List<String> sessions = Arrays.asList("9:00-10:00",
         "10:00-11:00","11:00-12:00","12:00-13:00");
         
