@@ -40,4 +40,10 @@ public class SesionService {
         
     }
 
+    public Sesion getSesion(String d){
+       
+        Sesion sesion = sesionRepository.findAll().stream().filter(a-> a.getDia().getDate().toString().equals(d)).findFirst().orElse(null);
+        return sesion;
+    }
+
 }

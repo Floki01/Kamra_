@@ -9,8 +9,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.cb.model.Consulta;
 import com.cb.model.Servicio;
 import com.cb.repository.ServicioRepository;
+import com.cb.repository.UserRepository;
+import com.cb.service.ConsultaService;
 import com.cb.service.UserServiceImpl;
 
 @Controller
@@ -22,6 +25,11 @@ public class UserController {
 
     @Autowired
     UserServiceImpl userServiceImpl;
+
+    @Autowired
+    ConsultaService consultaService;
+
+    
 
     @GetMapping("/")
     public ModelAndView registrationForm(@RequestParam(value = "gmail", required = false) String gmail, @RequestParam(value ="fecha", required=false) String fecha) {
@@ -63,6 +71,11 @@ public class UserController {
         modelAndView.addObject("fecha", fecha);
         modelAndView.addObject("servicio", servicio);
         modelAndView.addObject("user", userServiceImpl.findUserByEmail(authentication.getName()));
+
+
+        consultaService.save(Long.parseLong(id),authentication.getName(),fecha);
+
+
         return modelAndView;
     }
 
