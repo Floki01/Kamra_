@@ -28,14 +28,14 @@ public class ConsultaService {
     ConsultaRepository consultaRepository;
 
     public void save(Long id, String gmail, String d){
-
+        sesionService.change(d);
         Sesion sesion = sesionService.getSesion(d);
         Servicio servicio = servicioRepository.getReferenceById(id);
         User user = userRepository.findByEmail(gmail);
 
         Consulta consulta = new Consulta(user, sesion, servicio);
         consultaRepository.save(consulta);
-        System.out.println(sesion.getDia().getDate().toString());
+    
     }
     
 }

@@ -196,6 +196,8 @@
     var urlParams = new URLSearchParams(window.location.search);
     var id = urlParams.get('id');
 
+
+
     $(document).ready(function () {
 
       //Modificando dato id.
@@ -208,6 +210,7 @@
         locale: "es",
         selectable: true,
         defaultView: "month",
+        hiddenDays: [0, 6],
         showNonCurrentDates: false,
         //Funcion para quitar botones del calendario.
         viewRender: function (view, element) {
@@ -217,10 +220,10 @@
           var selectedDate = start.format();
           var tituloFechaContainer = $('#tituloFecha');
           var fechaContainer = $("#fecha");
-          
+
           fechaContainer.val(selectedDate);
           fechaContainer.hide();
-          
+
           tituloFechaContainer.text(selectedDate);
 
           // Realiza una llamada AJAX para obtener las horas disponibles
@@ -245,8 +248,18 @@
 
               });
             },
-          });
+          },);
+        },
+        onDayCreate: function (date) {
+          var currentDate = new Date(); // Obtener la fecha actual
+          window.alert("s");
+          // // Comparar la fecha actual con la fecha del día creado
+          // if (event.date < currentDate) {
+          //   // Agregar una clase CSS especial a los días pasados
+          //   event.element.classList.add('deshabilitado');
+          // }
         }
+
       });
     });
   </script>

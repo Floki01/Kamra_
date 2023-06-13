@@ -4,6 +4,8 @@ import java.sql.Date;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collector;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -24,10 +26,10 @@ public class SesionService {
         List<Sesion> sesions = sesionRepository.findAll();
         List<String> disponibles = new ArrayList<>();
 
-        sesions.forEach(a->{if(a.getDia().getDate().toString().equals(date)){
+        sesions.forEach(a->{if(a.getDia().getDate().toString().equals(date) && !a.isReservada()){
             disponibles.add(a.hora);
         }});
-    
+
         return disponibles;
     }
 
@@ -45,6 +47,12 @@ public class SesionService {
        
         Sesion sesion = sesionRepository.findAll().stream().filter(a-> a.getDia().getDate().toString().equals(d)).findFirst().orElse(null);
         return sesion;
+    }
+
+    public void change(String d){
+        Sesion sesion = sesionRepository.findAll().stream().filter(a-> a.getDia().getDate().toString().equals(d)).findFirst().orElse(null);
+        sesion.setReservada(true);
+        sesionRepository.save(sesion);
     }
 
 }

@@ -29,6 +29,7 @@ public class UserController {
     @Autowired
     ConsultaService consultaService;
 
+
     
 
     @GetMapping("/")
