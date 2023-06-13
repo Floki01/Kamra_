@@ -29,6 +29,9 @@ public class Sesion {
     @Column
     public String hora;
 
+    @Column()
+    private boolean reservada = false;
+
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "dia_id")
     private Dia dia;

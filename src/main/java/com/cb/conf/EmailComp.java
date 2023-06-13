@@ -8,7 +8,6 @@ import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 @Service
-@EnableAutoConfiguration 
 public class EmailComp {
 
     private final JavaMailSender mailSender;
