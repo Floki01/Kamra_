@@ -11,6 +11,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.cb.model.Consulta;
 import com.cb.model.Servicio;
+import com.cb.model.User;
 import com.cb.repository.ServicioRepository;
 import com.cb.repository.UserRepository;
 import com.cb.service.ConsultaService;
@@ -28,9 +29,6 @@ public class UserController {
 
     @Autowired
     ConsultaService consultaService;
-
-
-    
 
     @GetMapping("/")
     public ModelAndView registrationForm(@RequestParam(value = "gmail", required = false) String gmail, @RequestParam(value ="fecha", required=false) String fecha) {
@@ -83,6 +81,15 @@ public class UserController {
     @GetMapping("/rediretHome")
     public String rediretHome(@RequestParam("fecha") String fecha){
         return "redirect:/user/?fecha="+fecha;
+    }
+
+    @GetMapping("/sesiones")
+    public ModelAndView sesiones(Authentication authentication){
+        User user = userServiceImpl.findUserByEmail(authentication.getName());
+        ModelAndView modelAndView = new ModelAndView("sesionesUsuario");
+        modelAndView.addObject("sesiones", consultaService.getSesiones(user));
+        System.out.println("Numero"+consultaService.getSesiones(user).size());
+        return modelAndView;
     }
 
 
