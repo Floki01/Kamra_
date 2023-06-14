@@ -1,7 +1,7 @@
 <!doctype html>
 <html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 
-<head>
+<head>        
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="/styles/inicio.css">
@@ -46,8 +46,8 @@
 
         <ul class="navbar-nav mb-2 mb-lg-0" id="buttons-navbar">
           <li class="nav-item">
-            <a class="nav-link" href="/register">
-              <button class="btn btn-primary btn-sm" id="botones" type="submit">Configuraciones</button>
+            <a class="nav-link" href="/user/consultas">
+              <button class="btn btn-primary btn-sm" id="botones" type="submit">Mis consultas</button>
             </a>
           </li>
           <li class="nav-item">
@@ -62,8 +62,19 @@
   </nav>
 
   <div class="text-center fs-1 m-5 fw-medium ">Mis consultas</div>
-  <div class="container mx-auto border shadow rounded">
-    
+  
+  <div th:if="${consultas.size() == 0}" class="d-flex flex-column mb-3">
+    <div class="d-flex flex-column mb-3 justify-content-center">
+      <div class="p-2"><span class="titulo">"¡Aprovecha esta oportunidad para cuidar de ti! </span></div>
+    </div>
+    <br><br><br><br><br>
+    <div class="p-2"><a class="link-offset-2 link-underline link-underline-opacity-0" href="/user/servicios"><button class="button-56" role="button">Presiona aqui!</button></a></div>
+  </div>
+
+ 
+
+
+  <div th:else class="container mx-auto border  hadow rounded">
     <div th:each="consulta:${consultas}" class="row m-3">
       <div class="col">
           <h3><span class="badge spanUser" id="navbar-container"><span th:text="${consulta.sesion.dia.date}"></span></span></h3>
