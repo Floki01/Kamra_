@@ -83,11 +83,11 @@ public class UserController {
         return "redirect:/user/?fecha="+fecha;
     }
 
-    @GetMapping("/sesiones")
+    @GetMapping("/consultas")
     public ModelAndView sesiones(Authentication authentication){
         User user = userServiceImpl.findUserByEmail(authentication.getName());
         ModelAndView modelAndView = new ModelAndView("sesionesUsuario");
-        modelAndView.addObject("sesiones", consultaService.getSesiones(user));
+        modelAndView.addObject("consultas", consultaService.getSesiones(user));
         System.out.println("Numero"+consultaService.getSesiones(user).size());
         return modelAndView;
     }
