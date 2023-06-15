@@ -14,6 +14,7 @@ import com.cb.model.Sesion;
 import com.cb.model.User;
 import com.cb.repository.ConsultaRepository;
 import com.cb.repository.ServicioRepository;
+import com.cb.repository.SesionRepository;
 import com.cb.repository.UserRepository;
 
 @Service
@@ -31,6 +32,9 @@ public class ConsultaService {
     @Autowired
     ConsultaRepository consultaRepository;
 
+    @Autowired
+    SesionRepository sesionRepository;
+
     public void save(Long id, String gmail, String d){
         sesionService.change(d);
         Sesion sesion = sesionService.getSesion(d);
@@ -44,6 +48,14 @@ public class ConsultaService {
 
     public List<Consulta> getSesiones(User user){
         return consultaRepository.findAll().stream().filter(u -> u.getUser().getId() == user.getId()).collect(Collectors.toList());
+    }
+
+    public void deleteById(Long id){
+        Consulta consulta = consultaRepository.getReferenceById(id);
+        Sesion sesion = consulta.getSesion();
+        sesion.setReservada(false);  //liberando la sesion.
+        sesionRepository.save(sesion);
+        consultaRepository.deleteById(id);
     }
     
 }
