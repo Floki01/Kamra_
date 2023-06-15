@@ -25,7 +25,7 @@ public class SpringSecurity {
                 .permitAll();
 
         http.authorizeHttpRequests().
-        requestMatchers("/register/**","/calendar","/test/**","/ankh", "/inicio", "/tarot","/agenda/**", "/styles/**", "/resources/**","/login/**").permitAll()
+        requestMatchers("/register/**","/calendar","/test/**","/ankh", "/inicio", "/tarot", "/panel", "/agenda" ,"/agenda/**", "/styles/**", "/resources/**","/login/**").permitAll()
         .requestMatchers("/user/**").hasAnyRole("USER", "ADMIN")
         .and()
         .formLogin().loginPage("/login")
