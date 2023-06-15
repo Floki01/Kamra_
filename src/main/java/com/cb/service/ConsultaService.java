@@ -1,5 +1,9 @@
 package com.cb.service;
 
+import java.util.List;
+import java.util.stream.Collector;
+import java.util.stream.Collectors;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -10,6 +14,7 @@ import com.cb.model.Sesion;
 import com.cb.model.User;
 import com.cb.repository.ConsultaRepository;
 import com.cb.repository.ServicioRepository;
+import com.cb.repository.SesionRepository;
 import com.cb.repository.UserRepository;
 
 @Service
@@ -27,6 +32,9 @@ public class ConsultaService {
     @Autowired
     ConsultaRepository consultaRepository;
 
+    @Autowired
+    SesionRepository sesionRepository;
+
     public void save(Long id, String gmail, String d){
         sesionService.change(d);
         Sesion sesion = sesionService.getSesion(d);
@@ -36,6 +44,18 @@ public class ConsultaService {
         Consulta consulta = new Consulta(user, sesion, servicio);
         consultaRepository.save(consulta);
     
+    }
+
+    public List<Consulta> getSesiones(User user){
+        return consultaRepository.findAll().stream().filter(u -> u.getUser().getId() == user.getId()).collect(Collectors.toList());
+    }
+
+    public void deleteById(Long id){
+        Consulta consulta = consultaRepository.getReferenceById(id);
+        Sesion sesion = consulta.getSesion();
+        sesion.setReservada(false);  //liberando la sesion.
+        sesionRepository.save(sesion);
+        consultaRepository.deleteById(id);
     }
     
 }

@@ -3,7 +3,9 @@ package com.cb.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -11,10 +13,13 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.cb.model.Consulta;
 import com.cb.model.Servicio;
+import com.cb.model.User;
 import com.cb.repository.ServicioRepository;
 import com.cb.repository.UserRepository;
 import com.cb.service.ConsultaService;
 import com.cb.service.UserServiceImpl;
+
+import ch.qos.logback.core.model.Model;
 
 @Controller
 @RequestMapping("/user")
@@ -28,9 +33,6 @@ public class UserController {
 
     @Autowired
     ConsultaService consultaService;
-
-
-    
 
     @GetMapping("/")
     public ModelAndView registrationForm(@RequestParam(value = "gmail", required = false) String gmail, @RequestParam(value ="fecha", required=false) String fecha) {
@@ -83,6 +85,21 @@ public class UserController {
     @GetMapping("/rediretHome")
     public String rediretHome(@RequestParam("fecha") String fecha){
         return "redirect:/user/?fecha="+fecha;
+    }
+
+    @GetMapping("/consultas")
+    public ModelAndView sesiones(Authentication authentication){
+        User user = userServiceImpl.findUserByEmail(authentication.getName());
+        ModelAndView modelAndView = new ModelAndView("sesionesUsuario");
+        modelAndView.addObject("consultas", consultaService.getSesiones(user));
+        return modelAndView;
+    }
+
+    @GetMapping("/cancelar/{id}")
+    public ModelAndView cancelar(@PathVariable Long id){
+        ModelAndView modelAndView = new ModelAndView("redirect:/user/consultas?success");
+       consultaService.deleteById(id);
+        return modelAndView;
     }
 
 

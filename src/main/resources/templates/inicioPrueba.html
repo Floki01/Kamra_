@@ -29,7 +29,7 @@
       <div class="collapse navbar-collapse " id="navbarTogglerDemo02">
         <ul class="navbar-nav mb-2 mb-lg-0" id="ul-navbar">
           <li class="nav-item">
-            <a class="nav-link" aria-current="page" href="/inicio">Inicio</a>
+            <a class="nav-link" aria-current="page" href="/user/">Inicio</a>
           </li>
           <li class="nav-item">
             <a class="nav-link active" href="/tarot">
@@ -45,11 +45,13 @@
         </ul>
 
         <ul class="navbar-nav mb-2 mb-lg-0" id="buttons-navbar">
-          <li class="nav-item">
-            <a class="nav-link" href="/register">
-              <button class="btn btn-primary btn-sm" id="botones" type="submit">Configuraciones</button>
-            </a>
-          </li>
+          <div sec:authorize="hasRole('ROLE_USER')">
+            <li class="nav-item">
+              <a class="nav-link" href="/user/consultas">
+                <button class="btn btn-primary btn-sm" id="botones" type="submit">Mis consultas</button>
+              </a>
+            </li>
+          </div>
           <li class="nav-item">
             <a class="nav-link" href="/login">
               <button class="btn btn-primary btn-sm" id="botones" type="submit">Salir</button>
@@ -67,12 +69,11 @@
   <div sec:authorize="hasRole('ROLE_ADMIN')">
     This content is only shown to administrators.
   </div>
-  <div sec:authorize="hasRole('ROLE_USER')">
-    EcDEDED
-  </div>
   <div sec:authorize="isAuthenticated()">
     This content is only shown to authenticated users.
   </div>
+
+  <a class="nav-link" href="/user/sesiones">hh</a>
 
   <div class="container-fluid text-center">
     <div class="row align-items-center" id="infoUno">
