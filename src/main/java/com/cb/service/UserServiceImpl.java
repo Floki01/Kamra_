@@ -39,6 +39,19 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    public void saveAdmin(UserDto userDto) {
+        Role role = roleRepository.findByName(TbConstants.Roles.ADMIN);
+
+        if (role == null)
+            role = roleRepository.save(new Role(TbConstants.Roles.ADMIN));
+
+        User user = new User(userDto.getName(), userDto.getEmail(), passwordEncoder.encode(userDto.getPassword()),
+        userDto.getFNacimiento(),userDto.getTelefono(),Arrays.asList(role));
+
+        userRepository.save(user);
+    }
+
+    @Override
     public User findUserByEmail(String email) {
         return userRepository.findByEmail(email);
     }

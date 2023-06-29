@@ -1,0 +1,119 @@
+<html lang="en">
+<head>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <h1>Hola</h1>
+
+
+    <div class="container">
+        <div class="row">
+            <div class="col" style="height: 500px;">
+                <canvas id="chart"></canvas>
+            </div>
+            <div class="col">
+                <canvas id="progress"></canvas>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- <script>
+    fetch('/test/data')
+        .then(response => response.json())
+        .then(data => {
+        var ctx = document.getElementById('chart').getContext('2d');
+        var myChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+            labels: ['Tarot', 'Ankhn'],
+            datasets: [
+                {
+                label: 'Datos aleatorios',
+                data: data,
+                backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                borderColor: 'rgba(75, 192, 192, 1)',
+                borderWidth: 1
+                },
+            ]
+            },
+            options: {
+            responsive: true,
+            scales: {
+                y: {
+                beginAtZero: true
+                }
+            }
+            }
+        });
+        });
+    </script> -->
+
+    <script>
+        fetch('/test/data')
+          .then(response => response.json())
+          .then(data => {
+            var ctx = document.getElementById('progress').getContext('2d');
+            var myChart = new Chart(ctx, {
+              type: 'doughnut',
+              data: {
+                labels: ['Progreso'],
+                datasets: [{
+                  backgroundColor: ['rgba(75, 192, 192, 0.2)'],
+                  borderColor: ['rgba(75, 192, 192, 1)'],
+                  borderWidth: 1
+                }]
+              },
+              options: {
+                responsive: true,
+                cutout: '70%', // Tamaño del agujero en el centro
+                rotation: -0.5 * Math.PI, // Angulo de inicio
+                circumference: 1 * Math.PI // Longitud total de la barra (2 * Math.PI sería un círculo completo)
+              }
+            });
+          });
+      </script>
+
+    <script>
+        fetch('/test/data')
+        .then(response => response.json())
+        .then(data => {
+            var ctx = document.getElementById('chart').getContext('2d');
+            var myChart = new Chart(ctx, {
+            type: 'pie',
+            data: {
+                labels: ['Ankhn', 'Tarot'],
+                datasets: [{
+                label: 'Datos aleatorios',
+                data: data,
+                backgroundColor: [
+                    'rgba(255, 99, 132, 0.2)',
+                    'rgba(54, 162, 235, 0.2)',
+                    'rgba(255, 206, 86, 0.2)',
+                    'rgba(75, 192, 192, 0.2)',
+                    'rgba(153, 102, 255, 0.2)'
+                ],
+                borderColor: [
+                    'rgba(255, 99, 132, 1)',
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(255, 206, 86, 1)',
+                    'rgba(75, 192, 192, 1)',
+                    'rgba(153, 102, 255, 1)'
+                ],
+                borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true
+            }
+            });
+        });
+  </script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</body>
+</html>
