@@ -30,12 +30,24 @@ public class AdminController {
     @GetMapping("/")
     public String adminHome(Model model) {
 
+        //Si quieres traer cualquier registro de la bd debe ser por una clase servicio o repositorio.
+
+        //si quieres procesar o filtrar los datos antes de mostralos en las vistas, lo mejor es hacelo en metodos
+        //que iran en  alguna clase servicio donde tambien puedes llamar a alguna clase repositorio(las cuales tienen metodos para llamar a los registro de la bd)
         List<Consulta> consultas = consultaRepository.findAll();
+
+        //Con este metodo puedes pasar un dato con un nombre para invocarlo en el html al que apunta el controlador,
+        //en este caso panel
         model.addAttribute("consultas", consultas);
+        model.addAttribute("saludo", 12345);
+
+        //en el panel.html podras invocar los valores con el nombre de "consultas" y "saludo"
+
         return "panel"; 
     }
 
     
+    //Si quieres agregar mas vistas cada una tendra que tener un controlador.
 
     @GetMapping("/prueba")
     public String prueba() {
