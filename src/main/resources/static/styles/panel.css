@@ -1,7 +1,7 @@
 body{
     width: 100vw;
     height: 100vh;
-    background-color: #E8D8EA;
+    background-color: #ffffff;
 }
 
 #aside-container{ /* Contenedor aside + main */
@@ -97,6 +97,7 @@ main .estadisticas > div{
     background-color: white;
     padding: 1.8rem;
     border-radius: 2rem;
+    border: 2px solid black;
 }
 
 main .estadisticas > div .medio{
@@ -105,66 +106,30 @@ main .estadisticas > div .medio{
     justify-content: space-between;
 }
 
-main .estadisticas h3{
-    margin: 1rem 0 0.6rem;
+/* INGRESOS CSS */
+
+#iBorde{
+    border: 2px solid grey;
+    border-radius: 10px;
+    padding: 5px;
 }
 
-main .estadisticas .progreso{
-    position: relative;
-    width: 92px;
-    height: 92px;
-    border-radius: 50%;
-}
 
-main .estadisticas svg{
-    width: 7rem;
-    height: 7rem;
-}
 
-main .estadisticas svg circle{
-    fill: none;
-    stroke: #5B0866;
-    stroke-width: 14;
-    stroke-linecap: round;
-    transform: translate(5px, 5px);
-}
 
-main .estadisticas .clientes svg circle{
-    stroke-dashoffset: -30;
-    stroke-dasharray: 200;
-}
 
-main .estadisticas .ingresos svg circle{
-    stroke-dashoffset: 20;
-    stroke-dasharray: 80;
-}
 
-main .estadisticas .ankh svg circle{
-    stroke-dashoffset: 35;
-    stroke-dasharray: 110;
-}
-
-main .estadisticas .tarot svg circle{
-    stroke-dashoffset: 15;
-    stroke-dasharray: 110;
-}
-
-main .estadisticas .progreso .numero{
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: 100%;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-@media screen and (max-width: 1200px) {
+@media screen and (max-width: 900px) {
     #aside-container{
         width: 100%;
         height: 100vh;
         grid-template-columns: 45px 1fr;
+    }
+
+    main .estadisticas {
+        display: flex;
+        flex-wrap: wrap;
+        width: 100%;
     }
 
     .logo img{
@@ -184,10 +149,11 @@ main .estadisticas .progreso .numero{
         padding-right: 15px;
     }
     main .estadisticas{
-        grid-template-columns: 1fr;
+        grid-template-columns: 2fr;
     }
 
     aside .sidebar{
         height: 90%;
     }
 }
+

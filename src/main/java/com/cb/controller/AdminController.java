@@ -49,9 +49,29 @@ public class AdminController {
     
     //Si quieres agregar mas vistas cada una tendra que tener un controlador.
 
-    @GetMapping("/prueba")
-    public String prueba() {
-        return "prueba"; 
+    @GetMapping("/panel.html")
+    public String panel() {
+        return "panel";
+    }
+
+    @GetMapping("/ankhPanel.html")
+    public String ankhPanel() {
+        return "ankhPanel";
+    }
+
+    @GetMapping("/ingresos.html")
+    public String ingresos() {
+        return "ingresos";
+    }
+
+    @GetMapping("/sesiones.html")
+    public String sesiones() {
+        return "sesiones";
+    }
+
+    @GetMapping("/tarotPanel.html")
+    public String tarotPanel() {
+        return "tarotPanel";
     }
 
 
