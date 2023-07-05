@@ -41,6 +41,8 @@ public class AdminController {
         model.addAttribute("consultas", consultas);
         model.addAttribute("saludo", 12345);
 
+
+
         //en el panel.html podras invocar los valores con el nombre de "consultas" y "saludo"
 
         return "panel"; 
@@ -49,28 +51,34 @@ public class AdminController {
     
     //Si quieres agregar mas vistas cada una tendra que tener un controlador.
 
-    @GetMapping("/panel.html")
+    @GetMapping("/panel")
     public String panel() {
         return "panel";
     }
 
-    @GetMapping("/ankhPanel.html")
-    public String ankhPanel() {
+    @GetMapping("/ankhPanel")
+    public String ankhPanel(Model model) {
+        List<Consulta> consultas = consultaRepository.findAll();
+
+        model.addAttribute("consultas", consultas);
         return "ankhPanel";
     }
 
-    @GetMapping("/ingresos.html")
+    @GetMapping("/ingresos")
     public String ingresos() {
         return "ingresos";
     }
 
-    @GetMapping("/sesiones.html")
+    @GetMapping("/sesiones")
     public String sesiones() {
         return "sesiones";
     }
 
-    @GetMapping("/tarotPanel.html")
-    public String tarotPanel() {
+    @GetMapping("/tarotPanel")
+    public String tarotPanel(Model model) {
+        List<Consulta> consultas = consultaRepository.findAll();
+
+        model.addAttribute("consultas", consultas);
         return "tarotPanel";
     }
 

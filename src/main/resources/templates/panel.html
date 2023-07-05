@@ -17,7 +17,8 @@
             <div class="top-sidebar">
                 <div class="logo">
                     <img src="/resources/logo.jpeg">
-                    <h2>Kamra</h2>
+                    <a href="http://localhost:8080/inicio" style="text-decoration: none;
+                    color: inherit;"><h2>Kamra</h2></a>
                 </div>
                 <div class="close" id="close-btn">
                     <span class="material-icons-outlined">close</span>
@@ -25,26 +26,26 @@
             </div>
 
             <div class="sidebar">
-                <a href="panel.html">
+                <a href="/admin/">
                     <span class="material-icons-outlined">dashboard</span>
                     <h3>Panel</h3>
                 </a>
-                <a href="sesiones.html">
+                <a href="/admin/sesiones">
                     <span class="material-icons-outlined">fact_check</span>
                     <h3>Sesiones</h3>
                     <!-- Sesiones totales, anuales, semanales -->
                 </a>
-                <a href="ingresos.html">
+                <a href="/admin/ingresos">
                     <span class="material-icons-outlined">paid</span>
                     <h3>Ingresos</h3>
                     <!-- Ingresos totales, anuales, semanales -->
                 </a>
-                <a href="ankhPanel.html">
+                <a href="/admin/ankhPanel">
                     <img src="/resources/icon-ankh.png">
                     <h3>Ankh</h3>
                     <!-- Sesiones totales, anuales, semanales -->
                 </a>
-                <a href="tarotPanel.html">
+                <a href="/admin/tarotPanel">
                     <img src="/resources/icon-tarot.png">
                     <h3>Tarot</h3>
                     <!-- Sesiones totales, anuales, semanales -->
@@ -69,8 +70,8 @@
                                 </span>
                             <div class="medio">
                                 <div class="izq">
-                                    <h4>Nuevos clientes</h4>
-                                    <h2>56</h2>
+                                    <h4>Numero de consultas</h4>
+                                    <h1 th:text="${consultas.size()}"></h1>
                                 </div>
                             </div>
                         </div>
@@ -83,7 +84,7 @@
                             <div class="medio">
                                 <div class="izq">
                                     <h4>Ingresos mensuales</h4>
-                                    <h2>$850.000</h2>
+                                    <h2>$0</h2>
                                 </div>
                             </div>
                         </div>
@@ -94,7 +95,7 @@
                             <div class="medio">
                                 <div class="izq">
                                     <h4>Ankh mensuales</h4>
-                                    <h2>56%</h2>
+                                    <h2>50%</h2>
                                 </div>
                             </div>
                         </div>
@@ -105,7 +106,7 @@
                             <div class="medio">
                                 <div class="izq">
                                     <h4>Tarot mensuales</h4>
-                                    <h2>44%</h2>
+                                    <h2>50%</h2>
                                 </div>
                             </div>
                         </div>
@@ -129,9 +130,13 @@
                           <td>Tarot</td>
                           <td>17/06/2023</td>
                         </tr>
+                        <tr th:each="consulta : ${consultas}">
+                            <td th:text="${consulta.user.getName()}"></td>
+                            <td th:text="${consulta.servicio.getNombre()}"></td>
+                            <td th:text="${consulta.sesion.getDia().getDate}"></td>
+                          </tr>
                     </tbody>
-
-                  </table>
+                </table>
             </div>
         </main>
     </div>

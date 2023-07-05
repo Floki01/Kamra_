@@ -16,7 +16,7 @@ public class Config implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
 
-        servicioRepository.saveAll(Arrays.asList(new Servicio("Taror", 10000), new Servicio("Cruz de ankh", 10000)));
+        servicioRepository.saveAll(Arrays.asList(new Servicio("Tarot", 25000), new Servicio("Cruz de ankh", 30000)));
         
     }
 
