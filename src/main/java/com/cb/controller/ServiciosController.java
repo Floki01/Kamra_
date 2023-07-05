@@ -24,5 +24,10 @@ public class ServiciosController {
         return "tarot";
     }
 
+    @GetMapping("/panel")
+    public String mostrarPanel(){
+        return "panel";
+    }
+
 
 }

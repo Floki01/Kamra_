@@ -1,22 +1,18 @@
 package com.cb.controller;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
+import java.util.Random;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-
-import com.cb.conf.EmailComp;
 import com.cb.dto.UserDto;
-import com.cb.model.Dia;
-import com.cb.model.Sesion;
-import com.cb.repository.DiaRepository;
+import com.cb.model.Consulta;
+import com.cb.repository.ConsultaRepository;
 import com.cb.service.DiaService;
 import com.cb.service.SesionService;
 import com.cb.service.UserService;
@@ -37,7 +33,9 @@ public class Prueba {
     @Autowired
     private UserService userService;
 
-    private EmailComp emailComp;
+    @Autowired
+    private ConsultaRepository consultaRepository;
+
 
     @GetMapping("/add")
     public ResponseEntity<String> agregarDiasDelMes() {
@@ -49,6 +47,12 @@ public class Prueba {
     public ResponseEntity<String> agregarUser() {
         userService.saveUser(new UserDto("Matias Arias", "m.arias@gmail.com", "12345", "111", "123456789"));
         return ResponseEntity.ok("USUARIO CREADO");
+    }
+
+    @GetMapping("/admin")
+    public ResponseEntity<String> agregarAdmin() {
+        userService.saveAdmin(new UserDto("Matias Arias", "m.luengo@gmail.com", "12345", "111", "123456789"));
+        return ResponseEntity.ok("ADMINISTRADOR CREADO");
     }
 
     @GetMapping("/disp")
@@ -64,5 +68,28 @@ public class Prueba {
         return ResponseEntity.ok("Correo enviado");
     }
 
+    
+    @GetMapping("/data")
+    public List<Integer> getChartData() {
+        List<Integer> data = new ArrayList<>();
+        Random random = new Random();
 
+        // Generar 5 valores aleatorios
+        for (int i = 0; i < 3; i++) {
+            data.add(random.nextInt(100));
+        }
+        System.out.println(data);
+
+        return data;
+    }
+
+    @GetMapping("/lista")
+    public List<Consulta> userList(@RequestParam("term") String term){
+        
+
+        return consultaRepository.findAll();
+    }
 }
+
+
+
